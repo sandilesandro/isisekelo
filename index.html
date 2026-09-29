@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isisekelo Produce Farm | 100% Black-Owned Farm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="fav.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1b4d3e;
+            --accent: #2e8b57;
+            --dark: #111827;
+            --light: #f9fafb;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        /* Top Nav Styling */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            object-fit: cover;
+            border-radius: 9999px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background-color: var(--primary);
+            color: white !important;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .hamburger .bar {
+            width: 1.5rem;
+            height: 0.125rem;
+            background-color: var(--dark);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero-split {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding-top: 5rem;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+        }
+
+        .hero-left {
+            padding: 4rem 2rem 4rem 4rem;
+        }
+
+        .kicker {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .hero-left h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-left h1 .accent {
+            color: var(--primary);
+        }
+
+        .hero-left p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .hero-right-img {
+            height: 100%;
+            min-height: 35rem;
+            background-image: url('hero.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Operations Section */
+        .products-section {
+            padding: 6rem 0;
+            background-color: #ffffff;
+        }
+
+        .section-header-centered {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-header-centered h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header-centered p {
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .product-card {
+            background: var(--light);
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-body h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .product-body p {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .detail-list {
+            list-style: disc;
+            padding-left: 1.25rem;
+            color: #4b5563;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 0;
+            background-color: #f0fdf4;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+            gap: 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+        }
+
+        .gallery-card-body {
+            padding: 1.5rem;
+        }
+
+        .gallery-card-body h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-card-body p {
+            color: #4b5563;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 6rem 0;
+            background-color: #f3f4f6;
+        }
+
+        .impact-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .impact-text h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-text p {
+            color: #4b5563;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .impact-feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-feature h4 {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-feature p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box span {
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            padding: 6rem 0;
+            background-color: #ffffff;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .founder-card {
+            background: var(--light);
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            transition: transform 0.3s;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-inner .expertise {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #d1fae5;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        .card-inner h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-inner p {
+            color: #4b5563;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f9fafb 0%, #f0fdf4 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            align-items: center;
+        }
+
+        .contact-form-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ffffff;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 5rem 0 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1280px;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer-brand p {
+            color: #ffffff;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ffffff;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--dark);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+            z-index: 1000;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero-split {
+                grid-template-columns: 1fr;
+                padding-top: 6rem;
+            }
+            .hero-left {
+                padding: 2rem;
+            }
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 5rem;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 1.5rem;
+                border-bottom: 1px solid #e5e7eb;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .impact-split, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-flex">
+            <a href="#home" class="nav-brand">
+                <img src="isisekelo_logo.png" alt="IPF Logo" class="nav-logo">
+                <span>Isisekelo Produce Farm</span>
+            </a>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#operations">Operations</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact" class="nav-btn">Partner With Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-split">
+        <div class="hero-left">
+            <span class="kicker">Est. 2022 | Rural Mbombela</span>
+            <h1>Modernizing the <br><span class="accent">Agricultural Legacy.</span></h1>
+            <p>Isisekelo Produce Farm (IPF) is a 99.9% Black-owned, Level-1 B-BBEE EME agricultural enterprise powered by visionary black female leadership headquartered in Nelspruit, Mpumalanga. 
+                We bridge the gap between traditional farming wisdom and modern horticultural technology. 
+                Our mission is to stabilize the provincial food value chain by producing high-demand 
+                vegetables specifically cabbage, lettuce, and bell peppers using climate-resilient, 
+                sustainable practices.</p>
+            <div class="hero-btns">
+                <a href="#operations" class="btn-primary">View Strategy</a>
+                <a href="#contact" class="btn-outline">Partner With Us</a>
+            </div>
+        </div>
+        <div class="hero-right-img" role="img" aria-label="Isisekelo Produce Farm harvesting fresh cabbage"></div>
+     
+    </header>
+
+    <section id="operations" class="products-section">
+        <div class="section-header-centered">
+            <span class="kicker">02 / Operational Strategy</span>
+            <h2>Precision Crop Cultivation</h2>
+            <p>Isisekelo Produce Farm utilizes intensive horticultural practices to provide Mpumalanga with high-quality, nutrient-rich fresh produce under certified black female leadership.</p>
+        </div>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">🥬</div>
+                <div class="product-body">
+                    <h3>Leafy Greens</h3>
+                    <p>Focusing on high-yield Drumhead Cabbage and Crisphead Lettuce. Our staggered planting ensures a reliable year-round supply for regional markets.</p>
+                    <ul class="detail-list">
+                        <li>Drip irrigation for water efficiency</li>
+                        <li>Organic-integrated pest management</li>
+                        <li>Post-harvest cooling for freshness</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🍅</div>
+                <div class="product-body">
+                    <h3>Vine-Ripened Tomatoes</h3>
+                    <p>Cultivating Determinate and Indeterminate varieties optimized for brix content and shelf-life, targeting both retail and processing sectors.</p>
+                    <ul class="detail-list">
+                        <li>Trellising for vertical yield max</li>
+                        <li>Precision fertigation schedules</li>
+                        <li>Strict blight & pest monitoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🫑</div>
+                <div class="product-body">
+                    <h3>Premium Peppers</h3>
+                    <p>Cultivating premium bell peppers in controlled environments to ensure consistent size, color, and flavor profiles for Nelspruit’s retail sector.</p>
+                    <ul class="detail-list">
+                        <li>Net-house protection from hail</li>
+                        <li>Soil nutrient monitoring</li>
+                        <li>Direct-to-Retail supply chain</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="section-header-centered">
+            <span class="kicker">03 / Farm Gallery</span>
+            <h2>Life at Isisekelo Produce Farm</h2>
+            <p>A visual journey through our fields, highlighting our daily operations, expert stewardship, and women-led agricultural excellence in Mpumalanga.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="hero.jpg" alt="Harvesting fresh cabbage in the field" loading="lazy">
+                <div class="gallery-card-body">
+                    <h4>Cabbage Harvest Operations</h4>
+                    <p>Carefully inspecting and hand-harvesting premium drumhead cabbage for direct distribution across Mbombela.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="woman-working-rural-farming-agriculture-sector-celebrate-women-working-field-labour-day.jpg" alt="Woman working in rural farming sector" loading="lazy">
+                <div class="gallery-card-body">
+                    <h4>Empowerment in the Fields</h4>
+                    <p>Celebrating women working in agriculture, driving rural employment and sustainable food security initiatives.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="front-view-smiley-women-with-harvest.jpg" alt="Smiling woman with a harvest crate" loading="lazy">
+                <div class="gallery-card-body">
+                    <h4>From Soil to Market</h4>
+                    <p>Proudly displaying freshly picked seasonal produce ready for local butcheries, restaurants, and retail partners.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="side-view-hands-holding-plant.jpg" alt="Hands gently tending to young seedlings" loading="lazy">
+                <div class="gallery-card-body">
+                    <h4>Precision Agronomy & Care</h4>
+                    <p>Tending to delicate young seedlings along advanced drip-irrigation lines to guarantee optimal root development.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="soil.jpg" alt="Hands gently tending to young seedlings" loading="lazy">
+                <div class="gallery-card-body">
+                    <h4>Soil Preparation</h4>
+                    <p>Cultivating and testing rich loam beds to fine-tune pH levels and ensure optimal moisture retention for upcoming crops</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="seedling.jpg" alt="Hands gently tending to young seedlings" loading="lazy">
+                <div class="gallery-card-body">
+                    <h4>Seedling cultivation</h4>
+                    <p>Nurturing fragile green shoots in climate-controlled germination trays to build vigorous vitality before transplanting outdoors</p>
+                </div>
+            </div>
+
+          
+        </div>
+    </section>
+
+    <section id="impact" class="impact-section">
+        <div class="impact-split">
+            <div class="impact-text">
+                <span class="kicker">04 / Market & Social Impact</span>
+                <h2>Uplifting the Nelspruit Economy</h2>
+                <p>Isisekelo Produce Farm isn't just a farm; it’s a catalyst for rural development, empowerment, and food security in Mpumalanga under black female leadership.</p>
+                
+                <div class="impact-feature">
+                    <h4>Farm-to-Butchery Chain</h4>
+                    <p>By eliminating middlemen, we supply Nelspruit butcheries and restaurants directly, ensuring better margins and fresher produce for the community.</p>
+                </div>
+
+                <div class="impact-feature">
+                    <h4>Socio-Economic Contribution</h4>
+                    <p>We are committed to creating 7+ permanent jobs for local youth and providing mentorship to the next generation of agri-preneurs.</p>
+                </div>
+            </div>
+            <div class="impact-stats">
+                <div class="stat-box"><strong>7+</strong><span>Local Jobs Created</span></div>
+                <div class="stat-box"><strong>99.9%</strong><span>Black Youth Managed</span></div>
+                <div class="stat-box"><strong>Zero</strong><span>Middlemen In Supply</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership" class="leadership-section">
+        <div class="section-intro">
+            <span class="kicker">05 / Management & Founders</span>
+            <h2>The Visionary Leadership</h2>
+            <p>Led by a dynamic team of forward-thinking entrepreneurs combining technical agronomy with modern business logistics as a Level-1 B-BBEE EME enterprise.</p>
+        </div>
+        
+        <div class="founder-grid">
+            <div class="founder-card">
+                <div class="card-inner">
+                    <span class="expertise">Soil Science & Finance</span>
+                    <h3>Tollies Madonsela</h3>
+                    <p>Oversees soil health optimization and financial forecasting. Tollies ensures that crop rotations are mathematically aligned with market peak pricing.</p>
+                </div>
+            </div>
+
+            <div class="founder-card">
+                <div class="card-inner">
+                    <span class="expertise">Sales & Marketing Operations</span>
+                    <h3>Sandile Mnguni</h3>
+                    <p>Directs the precision drip-irrigation systems and daily farm logistics. Sandile manages the critical farm-to-market cold chain to ensure peak freshness.</p>
+                </div>
+            </div>
+
+            <div class="founder-card">
+                <div class="card-inner">
+                    <span class="expertise">Compliance & Business Development</span>
+                    <h3>Cornell Segage</h3>
+                    <p>Guardian of GlobalGAP compliance and retail certifications. Cornell manages land access validation and environmental impact sustainability.</p>
+                </div>
+            </div>
+
+            <div class="founder-card">
+                <div class="card-inner">
+                    <span class="expertise">Supply Chain & Logistics</span>
+                    <h3>Nomcebo Mokoena</h3>
+                    <p>Directs distribution networks and cold-chain integrity, optimizing direct-to-retail delivery pathways across the Mpumalanga municipal region.</p>
+                </div>
+            </div>
+
+            <div class="founder-card">
+                <div class="card-inner">
+                    <span class="expertise">Agronomy & Sustainability</span>
+                    <h3>Khethukuthula Nkosi</h3>
+                    <p>Spearheads climate-resilient crop health protocols, organic pest management integration, and ecological stewardship across all cultivation plots.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-grid">
+            <div>
+                <span class="kicker">06 / Get In Touch</span>
+                <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--dark); margin-bottom: 1rem;">Partner With Us</h2>
+                <p style="color: #4b5563; font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Whether you are a retailer, butcher, restaurant, or prospective agri-investor, we invite you to partner with Isisekelo Produce Farm for fresh, locally grown vegetables.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 1rem; color: #4b5563; font-weight: 500;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.25rem;">📍</span> Mpumalanga, Rural Nelspruit, South Africa
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.25rem;">📜</span> Level-1 B-BBEE EME Certified Enterprise
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.25rem;">✉️</span> partners@isisekeloproduce.co.za
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-card">
+                <form onsubmit="event.preventDefault(); showSuccessMessage();">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Partnership Inquiry / Message</label>
+                        <textarea id="message" rows="4" required placeholder="Tell us how you would like to collaborate..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; font-size: 1rem;">Submit Partnership Request</button>
+                    <div id="formSuccess" style="display: none; margin-top: 1rem; color: var(--accent); font-weight: 600; text-align: center;">
+                        Thank you! Your message has been sent successfully.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="nav-brand" style="color: white; margin-bottom: 20px;">
+                    <span>Isisekelo Produce Farm</span>
+                </div>
+                <p>Modernizing Mpumalanga’s agricultural landscape through sustainable, high-yield vegetable production and youth empowerment as a Level-1 B-BBEE EME entity.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navigate</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#operations">Operations</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#impact">Social Impact</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Location & Contact</h4>
+                <p>Mpumalanga, South Africa</p>
+                <p style="margin-top: 0.5rem; color: #9ca3af;">Level-1 B-BBEE EME</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Isisekelo Produce Farm (Pty) Ltd. Built for the future of South African Farming.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Go to top">
+        <span class="arrow">↑</span>
+    </button>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.onclick = () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        };
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.onclick = () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            };
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        function showSuccessMessage() {
+            document.getElementById('formSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('formSuccess').style.display = 'none';
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
